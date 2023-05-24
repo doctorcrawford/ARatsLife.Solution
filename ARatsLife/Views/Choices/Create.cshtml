@@ -9,9 +9,8 @@
 
 @using (Html.BeginForm())
 {
-  @Html.Hidden("id", (int)ViewBag.Plotpoint.PlotpointId)
-  @Html.DropDownList("PlotpointId")
-  
+  @Html.Hidden("PlotpointId", (int)ViewBag.Plotpoint.PlotpointId)
+
   @Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)
   <input type="submit" value="Add" />
