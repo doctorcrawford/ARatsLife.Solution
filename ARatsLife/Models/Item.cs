@@ -1,4 +1,4 @@
-namespace ARatsLife;
+namespace ARatsLife.Models;
 public class Item
 {
   public int ItemId { get; set; }
