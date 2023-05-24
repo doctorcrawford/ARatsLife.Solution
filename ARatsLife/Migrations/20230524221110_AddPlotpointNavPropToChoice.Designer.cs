@@ -2,6 +2,7 @@
 using ARatsLife.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ARatsLife.Migrations
 {
     [DbContext(typeof(ARatsLifeContext))]
-    partial class ARatsLifeContextModelSnapshot : ModelSnapshot
+    [Migration("20230524221110_AddPlotpointNavPropToChoice")]
+    partial class AddPlotpointNavPropToChoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,17 +77,12 @@ namespace ARatsLife.Migrations
             modelBuilder.Entity("ARatsLife.Models.Choice", b =>
                 {
                     b.HasOne("ARatsLife.Models.Plotpoint", "Plotpoint")
-                        .WithMany("Choices")
+                        .WithMany()
                         .HasForeignKey("PlotpointId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Plotpoint");
-                });
-
-            modelBuilder.Entity("ARatsLife.Models.Plotpoint", b =>
-                {
-                    b.Navigation("Choices");
                 });
 #pragma warning restore 612, 618
         }
