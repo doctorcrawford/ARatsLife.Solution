@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@using ARatsLife.Models
+@model ARatsLife.Models.Plotpoint
+@using System.Collections.Generic
+
+<h2>Details</h2>
+
+<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h5>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h5>
+<br>
+<h4>Choices</h4>
+
+@if (Model.Choices.Count == 0)
+{
+  <p>You haven't added any choices to this plotpoint yet!</p>
+}
+
+<ul>
+  @foreach (var model in Model.Choices)
+  {
+    <li>@($"{model.Description}")</li>
+  }
+</ul>
+
+@Html.ActionLink("Add choice", "Create", "Choices", new { id = Model.PlotpointId})

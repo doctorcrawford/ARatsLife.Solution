@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ARatsLife.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace ARatsLife.Controllers
 
     public ActionResult Index()
     {
-      List<Plotpoint> model = _db.Plotpoints.ToList();
+      List<Plotpoint> model = _db.Plotpoints.ToList();                                      
       return View(model);
     }
     public ActionResult Create()
@@ -52,6 +54,14 @@ namespace ARatsLife.Controllers
       _db.Plotpoints.Update(plotpoint);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      Plotpoint plotpoint = _db.Plotpoints
+                                          .Include(plotpoint => plotpoint.Choices)
+                                          .FirstOrDefault(plotpoint => plotpoint.PlotpointId == id);
+      return View(plotpoint);
     }
 
     public ActionResult Delete(int id)

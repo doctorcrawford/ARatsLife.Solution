@@ -22,8 +22,10 @@
         <li>@($"{model.Description}")</li>
 
       </ul>
+      <p>@Html.ActionLink("View details", "Details", new { id = model.PlotpointId })</p>
       <p>@Html.ActionLink("Edit this plotpoint", "Edit", new { id = model.PlotpointId })</p>
       <p>@Html.ActionLink("Delete this plotpoint", "Delete", new { id = model.PlotpointId })</p>
+      <p>@Html.ActionLink("Add a choice", "Create", "Choices", new { id = model.PlotpointId})</p>
 
     </li>
   }

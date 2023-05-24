@@ -13,6 +13,10 @@
 
 @using (Html.BeginForm())
 {
+  @Html.LabelFor(model => model.PlotpointId)
+  @* @Html.Hidden("PlotpointId") *@
+  
+
   @Html.LabelFor(model => model.Title)
   @Html.TextBoxFor(model => model.Title)
 

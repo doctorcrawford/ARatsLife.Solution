@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@using ARatsLife.Models
+@model ARatsLife.Models.Choice
+
+<h2>Add a choice to: @ViewBag.Plotpoint.Title</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.Hidden("id", (int)ViewBag.Plotpoint.PlotpointId)
+  @Html.DropDownList("PlotpointId")
+  
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  <input type="submit" value="Add" />
+}
