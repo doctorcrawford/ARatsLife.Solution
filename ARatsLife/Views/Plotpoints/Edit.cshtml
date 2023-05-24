@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model ARatsLife.Models.Plotpoint
+
+<h2>Edit</h2>
+
+<h4>Edit the following Plotpoint: @Html.DisplayFor(model => model.Description)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PlotpointId)
+
+  @Html.LabelFor(model => model.Description)
+  @Html.EditorFor(model => model.Description)
+
+  <input type="submit" value="Save Changes" />
+}
+
+<p>@Html.ActionLink("Home", "Index")</p>

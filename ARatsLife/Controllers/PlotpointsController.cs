@@ -32,5 +32,18 @@ namespace ARatsLife.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index", "Home");
     }
+
+    public ActionResult Edit (int id)
+    {
+      Plotpoint thisPlotpoint = _db.Plotpoints.FirstOrDefault(plotpoint => plotpoint.PlotpointId == id);
+      return View(thisPlotpoint);
+    }
+    [HttpPost]
+    public ActionResult Edit (Plotpoint plotpoint)
+    {
+      _db.Plotpoints.Update(plotpoint);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
