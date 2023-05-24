@@ -6,11 +6,14 @@
 
 <h2>Edit</h2>
 
-<h4>Edit the following Plotpoint: @Html.DisplayFor(model => model.Description)</h4>
+<h4>Edit the following Plotpoint: @Html.DisplayFor(model => model.Title)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.PlotpointId)
+
+  @Html.LabelFor(model => model.Title)
+  @Html.EditorFor(model => model.Title)
 
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)

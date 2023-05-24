@@ -28,20 +28,43 @@ namespace ARatsLife.Controllers
     [HttpPost]
     public ActionResult Create(Plotpoint plotpoint)
     {
+      if (!ModelState.IsValid)
+      {
+        return View(plotpoint);
+      }
+      else
+      {
       _db.Plotpoints.Add(plotpoint);
       _db.SaveChanges();
       return RedirectToAction("Index", "Home");
+      }
     }
 
-    public ActionResult Edit (int id)
+    public ActionResult Edit(int id)
     {
       Plotpoint thisPlotpoint = _db.Plotpoints.FirstOrDefault(plotpoint => plotpoint.PlotpointId == id);
       return View(thisPlotpoint);
     }
+
     [HttpPost]
-    public ActionResult Edit (Plotpoint plotpoint)
+    public ActionResult Edit(Plotpoint plotpoint)
     {
       _db.Plotpoints.Update(plotpoint);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Plotpoint plotpoint = _db.Plotpoints.FirstOrDefault(plotpoint => plotpoint.PlotpointId == id);
+      return View(plotpoint);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Plotpoint plotpoint = _db.Plotpoints.FirstOrDefault(plotpoint => plotpoint.PlotpointId == id);
+      _db.Plotpoints.Remove(plotpoint);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

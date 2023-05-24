@@ -6,6 +6,8 @@
 
 <h3>Here are the plotpoints you have added so far:</h3>
 
+<p>@Html.ActionLink("Create a plotpoint", "Create")</p>
+
 @if (Model.Count == 0)
 {
   <p>You haven't added any plotpoints yet!</p>
@@ -14,7 +16,15 @@
 <ol>
   @foreach (Plotpoint model in Model)
   {
-    <li>@($"{model.Description}")</li>
-    @Html.ActionLink("Edit this plotpoint", "Edit", new { id = model.PlotpointId })
+    <li>
+      <strong>@($"{model.Title}")</strong>
+      <ul>
+        <li>@($"{model.Description}")</li>
+
+      </ul>
+      <p>@Html.ActionLink("Edit this plotpoint", "Edit", new { id = model.PlotpointId })</p>
+      <p>@Html.ActionLink("Delete this plotpoint", "Delete", new { id = model.PlotpointId })</p>
+
+    </li>
   }
 </ol>

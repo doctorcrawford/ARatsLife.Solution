@@ -2,6 +2,7 @@
 using ARatsLife.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ARatsLife.Migrations
 {
     [DbContext(typeof(ARatsLifeContext))]
-    partial class ARatsLifeContextModelSnapshot : ModelSnapshot
+    [Migration("20230524210739_AddInputValidation")]
+    partial class AddInputValidation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

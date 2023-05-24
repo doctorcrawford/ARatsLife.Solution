@@ -4,9 +4,21 @@
 
 @model ARatsLife.Models.Plotpoint
 
+<h2>Create</h2>
+
+<h5>Plotpoint</h5>
+
+<h6>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600;"})</h6>
+<h6>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;"})</h6>
+
 @using (Html.BeginForm())
 {
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title)
+
   @Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)
   <input type="submit" value="Add To Story" />
 }
+
+<p>@Html.ActionLink("Back to plotpoints", "Index")</p>
