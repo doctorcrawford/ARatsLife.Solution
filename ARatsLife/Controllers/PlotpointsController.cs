@@ -19,7 +19,7 @@ public class PlotpointsController : Controller
 
   public ActionResult Index()
   {
-    List<Plotpoint> model = _db.Plotpoints.ToList();
+    List<Plotpoint> model = _db.Plotpoints.OrderBy(pp => pp.StoryPosition).ToList();
     return View(model);
   }
   public ActionResult Create()
@@ -36,6 +36,21 @@ public class PlotpointsController : Controller
     }
     else
     {
+      var ppList = _db.Plotpoints.ToList();
+      if (ppList.Exists(x => x.StoryPosition == plotpoint.StoryPosition))
+      {
+        var greaterPlotpoints = _db.Plotpoints
+            .Where(row => row.StoryPosition >= plotpoint.StoryPosition)
+            .ToList();
+
+        foreach (var pp in greaterPlotpoints)
+        {
+          pp.StoryPosition += 1;
+          _db.Plotpoints.Update(pp);
+          _db.SaveChanges();
+        }
+      }
+
       _db.Plotpoints.Add(plotpoint);
       _db.SaveChanges();
       return RedirectToAction("Index", "Home");

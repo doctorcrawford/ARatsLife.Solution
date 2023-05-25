@@ -20,6 +20,7 @@
       <strong>@($"{model.Title}")</strong>
       <ul>
         <li>@($"{model.Description}")</li>
+        <li>@($"{model.StoryPosition}")</li>
 
       </ul>
       <p>@Html.ActionLink("View details", "Details", new { id = model.PlotpointId })</p>
