@@ -18,6 +18,9 @@
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)
 
+  @Html.LabelFor(model => model.StoryPosition)
+  @Html.TextBoxFor(model => model.StoryPosition, new { @type = "number" })
+
   <input type="submit" value="Save Changes" />
 }
 

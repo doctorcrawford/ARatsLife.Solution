@@ -22,6 +22,10 @@
 
   @Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)
+
+  @Html.LabelFor(model => model.StoryPosition)
+  @Html.TextBoxFor(model => model.StoryPosition, new { @type = "number" })
+
   <input type="submit" value="Add To Story" />
 }
 
