@@ -5,21 +5,20 @@ using ARatsLife.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ARatsLife.Controllers
+namespace ARatsLife.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
-    {
-      private readonly ARatsLifeContext _db;
+  private readonly ARatsLifeContext _db;
 
-      public HomeController(ARatsLifeContext db)
-      {
-        _db = db;
-      }
+  public HomeController(ARatsLifeContext db)
+  {
+    _db = db;
+  }
 
-      [HttpGet("/")]
-      public ActionResult Index()
-      {
-        return View();
-      }
-    }
+  [HttpGet("/")]
+  public ActionResult Index()
+  {
+    return View();
+  }
 }
